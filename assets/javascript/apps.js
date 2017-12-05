@@ -1,6 +1,6 @@
 //array with topics//
 var topics = ["trump", "christmas", "coding"];
-
+var newTopic;
 //variable representing user input//
 
 var input;
@@ -8,16 +8,10 @@ var input;
 // TODO: function that stores user input
 
 
-//function that pushes input into topics//
-
-function addTopic() {
-  topics.push(input);
-}
 
 //calls makeButtons function//
 
 makeButtons()
-
 
 //get request from Giphy//
 // TODO: get data-name from button
@@ -76,3 +70,19 @@ function makeButtons() {
   }
 
 };
+
+//store input from user//
+
+$("#add-topic").on("click", function(event) {
+  event.preventDefault();
+  // This line grabs the input from the textbox
+newTopic = $("#topic-input").val().trim();
+
+  // Adding movie from the textbox to our array
+  topics.push(newTopic);
+
+  // Calling renderButtons which handles the processing of our movie array
+
+});
+
+  // Adding movie from the textbox to our array
