@@ -80,9 +80,10 @@ newTopic = $("#topic-input").val().trim();
 
   // Adding movie from the textbox to our array
   topics.push(newTopic);
-
+  makeButtons();
   // Calling renderButtons which handles the processing of our movie array
 
 });
+
 
   // Adding movie from the textbox to our array
