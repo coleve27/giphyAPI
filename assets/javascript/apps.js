@@ -5,11 +5,6 @@ var newTopic;
 
 var input;
 
-// TODO: function that stores user input
-
-
-
-//calls makeButtons function//
 
 makeButtons()
 
@@ -54,12 +49,14 @@ $("#add-topic").on("click", function(event) {
 
 });
 
+//get request from Giphy//
 
+// TODO: replace "kittens" with data-value from botton clicked
 
-$("#cat-button").on("click", function() {
+$("#buttons-view").on("click", function() {
   console.log(topics[0])
   // Storing our giphy API URL for a random cat image
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=kyHuqCiHNkqTwr677CRLL8mWyfgA7emq&q=kittens&limit=10&offset=0&rating=G&lang=en";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=kyHuqCiHNkqTwr677CRLL8mWyfgA7emq&q=" + newTopic + "&limit=10&offset=0&rating=G&lang=en";
 
   // Perfoming an AJAX GET request to our queryURL
   $.ajax({
