@@ -73,7 +73,7 @@ $("#cat-button").on("click", function() {
     for (var i = 0; i < response.data.length; i++) {
 
     var imageUrl = response.data[i].images.original.url;
-  };
+
 
     // Creating and storing an image tag
     var catImage = $("<img>");
@@ -84,6 +84,7 @@ $("#cat-button").on("click", function() {
 
     // Prepending the catImage to the images div
   $("#images").prepend(catImage);
+  };
 });
 
 });
