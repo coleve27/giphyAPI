@@ -14,39 +14,8 @@ var input;
 makeButtons()
 
 //get request from Giphy//
-// TODO: get data-name from button
+
 // TODO: replace "kittens" with data-value from botton clicked
-
-
-$("#cat-button").on("click", function() {
-  console.log(topics[0])
-  // Storing our giphy API URL for a random cat image
-  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=kyHuqCiHNkqTwr677CRLL8mWyfgA7emq&q=kittens&limit=25&offset=0&rating=G&lang=en";
-
-  // Perfoming an AJAX GET request to our queryURL
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-
-  // After the data from the AJAX request comes back
-  .done(function(response) {
-
-    // Saving the image_original_url property
-    var imageUrl = response.data[0].images.original.url;
-
-    // Creating and storing an image tag
-    var catImage = $("<img>");
-
-    // Setting the catImage src attribute to imageUrl
-    catImage.attr("src", imageUrl);
-    catImage.attr("alt", "cat image");
-
-    // Prepending the catImage to the images div
-    $("#images").prepend(catImage);
-  });
-});
-
 
 
 
@@ -68,7 +37,7 @@ function makeButtons() {
 
     $("#buttons-view").append(a);
   }
-
+  return;
 };
 
 //store input from user//
@@ -76,7 +45,7 @@ function makeButtons() {
 $("#add-topic").on("click", function(event) {
   event.preventDefault();
   // This line grabs the input from the textbox
-newTopic = $("#topic-input").val().trim();
+  newTopic = $("#topic-input").val().trim();
 
   // Adding movie from the textbox to our array
   topics.push(newTopic);
@@ -86,4 +55,36 @@ newTopic = $("#topic-input").val().trim();
 });
 
 
+
+$("#cat-button").on("click", function() {
+  console.log(topics[0])
+  // Storing our giphy API URL for a random cat image
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=kyHuqCiHNkqTwr677CRLL8mWyfgA7emq&q=kittens&limit=10&offset=0&rating=G&lang=en";
+
+  // Perfoming an AJAX GET request to our queryURL
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+  // After the data from the AJAX request comes back
+  .done(function(response) {
+    $("#images").empty();
+    for (var i = 0; i < response.data.length; i++) {
+
+    var imageUrl = response.data[i].images.original.url;
+  };
+
+    // Creating and storing an image tag
+    var catImage = $("<img>");
+
+    // Setting the catImage src attribute to imageUrl
+    catImage.attr("src", imageUrl);
+    catImage.attr("alt", "cat image");
+
+    // Prepending the catImage to the images div
+  $("#images").prepend(catImage);
+});
+
+});
   // Adding movie from the textbox to our array
